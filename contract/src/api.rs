@@ -189,8 +189,7 @@ impl Contract {
             env::panic_str("The attached deposit could not be added to any account");
         }
 
-        if options.callback_receiver_id.is_some() {
-            let callback_receiver_id = options.callback_receiver_id.unwrap();
+        if let Some(callback_receiver_id) = options.callback_receiver_id {
 
             callback_contract::on_social_set(
                 near_sdk::env::block_height(),
